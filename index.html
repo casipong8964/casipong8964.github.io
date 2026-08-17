@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rommel Jave Casipong — Software Developer</title>
+<meta name="description" content="Portfolio of Rommel Jave Casipong, BSIT student and aspiring software developer focused on AI and GPU computing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:            #12151A;
+    --bg-soft:       #171B22;
+    --surface:       #1C212B;
+    --surface-line:  #2B313D;
+    --text:          #E9E6DE;
+    --text-dim:      #939AA8;
+    --text-faint:    #5C6472;
+    --accent:        #D48A3E;
+    --accent-soft:   #D48A3E33;
+    --accent-2:      #4FA8C9;
+    --accent-2-soft: #4FA8C933;
+    --radius:        3px;
+    --maxw:          1120px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans', system-ui, sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* faint circuit-grid backdrop */
+  body{
+    background-image:
+      linear-gradient(var(--bg-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--bg-soft) 1px, transparent 1px);
+    background-size:64px 64px;
+    background-position:center top;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 32px; }
+
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+  }
+
+  :focus-visible{
+    outline:2px solid var(--accent-2);
+    outline-offset:3px;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(18,21,26,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--surface-line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:68px;
+  }
+  .logo{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:500;
+    font-size:15px;
+    color:var(--text);
+    border:1px solid var(--surface-line);
+    padding:5px 10px;
+    border-radius:var(--radius);
+  }
+  .logo span{ color:var(--accent); }
+  .navlinks{ display:flex; gap:36px; font-size:14.5px; color:var(--text-dim); }
+  .navlinks a:hover{ color:var(--text); }
+  .navbtn{
+    display:none;
+    flex-direction:column; gap:5px;
+    background:none; border:none; cursor:pointer; padding:8px;
+  }
+  .navbtn span{ width:22px; height:2px; background:var(--text); display:block; }
+
+  @media (max-width:760px){
+    .navlinks{
+      position:absolute; top:68px; left:0; right:0;
+      background:var(--bg-soft);
+      border-bottom:1px solid var(--surface-line);
+      flex-direction:column; gap:0;
+      display:none;
+    }
+    .navlinks.open{ display:flex; }
+    .navlinks a{ padding:16px 32px; border-top:1px solid var(--surface-line); }
+    .navbtn{ display:flex; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding:96px 0 80px; }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(38px, 5.4vw, 60px);
+    line-height:1.06;
+    margin:14px 0 20px;
+  }
+  .hero p.lead{
+    font-size:17.5px;
+    color:var(--text-dim);
+    max-width:46ch;
+    margin-bottom:32px;
+  }
+  .hero .lead strong{ color:var(--text); font-weight:600; }
+
+  .btnrow{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13.5px;
+    padding:13px 22px;
+    border-radius:var(--radius);
+    border:1px solid var(--surface-line);
+    transition:border-color .15s, background .15s;
+  }
+  .btn-primary{ background:var(--accent); color:#15130E; border-color:var(--accent); font-weight:500; }
+  .btn-primary:hover{ background:#c07c33; }
+  .btn-ghost{ color:var(--text); }
+  .btn-ghost:hover{ border-color:var(--text-dim); }
+
+  /* status card - signature element */
+  .statuscard{
+    background:var(--surface);
+    border:1px solid var(--surface-line);
+    border-radius:6px;
+    padding:26px 26px 22px;
+    font-family:'IBM Plex Mono', monospace;
+    position:relative;
+    overflow:hidden;
+  }
+  .statuscard::before{
+    content:"";
+    position:absolute; left:0; right:0; top:0; height:2px;
+    background:linear-gradient(90deg, transparent, var(--accent-2), transparent);
+    animation:scan 3.2s linear infinite;
+  }
+  @keyframes scan{
+    0%{ transform:translateX(-100%); }
+    100%{ transform:translateX(100%); }
+  }
+  .statuscard .sc-head{
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:11.5px; letter-spacing:.1em; color:var(--text-faint);
+    text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  .dot{ width:7px; height:7px; border-radius:50%; background:var(--accent-2); display:inline-block; margin-right:7px;
+    box-shadow:0 0 0 3px var(--accent-2-soft); }
+  .sc-row{
+    display:flex; justify-content:space-between; gap:12px;
+    font-size:13.5px;
+    padding:10px 0;
+    border-top:1px solid var(--surface-line);
+  }
+  .sc-row:first-of-type{ border-top:none; }
+  .sc-row .k{ color:var(--text-faint); }
+  .sc-row .v{ color:var(--text); text-align:right; }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding:76px 0; border-top:1px solid var(--surface-line); }
+  .sec-head{ margin-bottom:40px; max-width:60ch; }
+  .sec-head h2{ font-size:clamp(26px,3.4vw,34px); margin-top:10px; }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid; grid-template-columns:1.3fr 1fr; gap:48px;
+  }
+  .about-grid p{ color:var(--text-dim); margin-bottom:16px; max-width:58ch; }
+  .buildlog{
+    background:var(--surface);
+    border:1px solid var(--surface-line);
+    border-radius:6px;
+    padding:22px 24px;
+  }
+  .buildlog .eyebrow{ display:block; margin-bottom:14px; }
+  .buildlog ul{ list-style:none; }
+  .buildlog li{
+    font-size:14px; color:var(--text-dim);
+    padding:10px 0; border-top:1px solid var(--surface-line);
+    display:flex; gap:10px;
+  }
+  .buildlog li:first-child{ border-top:none; }
+  .buildlog li::before{ content:"›"; color:var(--accent); font-family:'IBM Plex Mono',monospace; }
+
+  @media (max-width:760px){
+    .hero .wrap, .about-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skill-groups{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+  .skill-group{
+    background:var(--surface);
+    border:1px solid var(--surface-line);
+    border-radius:6px;
+    padding:22px;
+  }
+  .skill-group h3{ font-size:14px; color:var(--text-dim); font-weight:500; margin-bottom:16px;
+    font-family:'IBM Plex Mono', monospace; letter-spacing:.04em; }
+  .tags{ display:flex; flex-wrap:wrap; gap:8px; }
+  .tag{
+    font-size:13px; padding:6px 11px;
+    border:1px solid var(--surface-line);
+    border-radius:20px;
+    color:var(--text);
+  }
+  .tag.learning{ color:var(--accent-2); border-color:var(--accent-2-soft); }
+  @media (max-width:760px){ .skill-groups{ grid-template-columns:1fr; } }
+
+  /* ---------- PROJECTS ---------- */
+  .proj-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .proj-card{
+    background:var(--surface);
+    border:1px solid var(--surface-line);
+    border-radius:6px;
+    display:flex; flex-direction:column;
+    overflow:hidden;
+  }
+  .proj-top{
+    padding:16px 20px;
+    border-bottom:1px solid var(--surface-line);
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:'IBM Plex Mono', monospace; font-size:11px;
+  }
+  .proj-dots{ display:flex; gap:5px; }
+  .proj-dots span{ width:8px; height:8px; border-radius:50%; background:var(--surface-line); }
+  .badge-sample{
+    color:var(--text-faint); letter-spacing:.08em; text-transform:uppercase; font-size:10.5px;
+  }
+  .proj-body{ padding:22px 20px 24px; flex:1; display:flex; flex-direction:column; }
+  .proj-body h3{ font-size:18px; margin-bottom:10px; }
+  .proj-body p{ color:var(--text-dim); font-size:14px; margin-bottom:18px; flex:1; }
+  .proj-stack{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:18px; }
+  .proj-stack span{
+    font-family:'IBM Plex Mono', monospace; font-size:11px;
+    color:var(--accent-2); background:var(--accent-2-soft);
+    padding:3px 8px; border-radius:3px;
+  }
+  .proj-links{ display:flex; gap:16px; font-size:13px; font-family:'IBM Plex Mono', monospace; }
+  .proj-links a{ color:var(--text-dim); border-bottom:1px solid var(--surface-line); padding-bottom:2px; }
+  .proj-links a:hover{ color:var(--accent); border-color:var(--accent); }
+  @media (max-width:900px){ .proj-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:640px){ .proj-grid{ grid-template-columns:1fr; } }
+
+  .proj-note{
+    margin-top:28px; font-size:13.5px; color:var(--text-faint);
+    font-family:'IBM Plex Mono', monospace;
+    border-left:2px solid var(--accent-soft);
+    padding-left:14px;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact{ text-align:left; }
+  .contact-wrap{
+    display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:32px;
+  }
+  .contact h2{ font-size:clamp(30px,4.2vw,44px); max-width:16ch; }
+  .contact-links{ display:flex; flex-direction:column; gap:4px; }
+  .contact-links a{
+    font-family:'IBM Plex Mono', monospace; font-size:15px;
+    padding:10px 0; color:var(--text-dim);
+    border-bottom:1px solid var(--surface-line);
+    display:flex; justify-content:space-between; width:280px;
+  }
+  .contact-links a:hover{ color:var(--accent); }
+
+  footer{
+    border-top:1px solid var(--surface-line);
+    padding:26px 0; font-size:12.5px; color:var(--text-faint);
+    font-family:'IBM Plex Mono', monospace;
+  }
+  footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">RJC<span>_</span></div>
+    <div class="navlinks" id="navlinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="navbtn" id="navbtn" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">BSIT · Software Development Track</span>
+        <h1>Rommel Jave<br>Casipong</h1>
+        <p class="lead">Third-year BSIT student building toward <strong>AI and GPU-accelerated computing</strong> — writing code now, aiming for an internship and career at a company like <strong>NVIDIA</strong>.</p>
+        <div class="btnrow">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+        </div>
+      </div>
+
+      <div class="statuscard">
+        <div class="sc-head"><span><span class="dot"></span>status.log</span><span>v0.1</span></div>
+        <div class="sc-row"><span class="k">role</span><span class="v">Aspiring Software Developer</span></div>
+        <div class="sc-row"><span class="k">focus</span><span class="v">AI / GPU Computing</span></div>
+        <div class="sc-row"><span class="k">track</span><span class="v">Software Development</span></div>
+        <div class="sc-row"><span class="k">standing</span><span class="v">3rd Yr → 4th Yr, Sem 1</span></div>
+        <div class="sc-row"><span class="k">target</span><span class="v">Internship-ready</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">01 — About</span>
+        <h2>Learning by building</h2>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p>I'm a BSIT student on the Software Development track, working through the fundamentals of programming, databases, and networking while pointing my longer-term goal toward AI and GPU-accelerated computing.</p>
+          <p>Right now I'm focused on getting internship-ready: strengthening core programming skills, picking up cloud fundamentals, and building real projects worth showing. This site tracks that progress — replace this paragraph with your own story once you've got a version you like.</p>
+        </div>
+        <div class="buildlog">
+          <span class="eyebrow">Currently working on</span>
+          <ul>
+            <li>Core programming — data structures &amp; algorithms</li>
+            <li>Cloud computing fundamentals</li>
+            <li>Cybersecurity awareness basics</li>
+            <li>Database design &amp; SQL</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">02 — Skills</span>
+        <h2>Toolkit</h2>
+      </div>
+      <div class="skill-groups">
+        <div class="skill-group">
+          <h3>Languages</h3>
+          <div class="tags">
+            <span class="tag">Java</span>
+            <span class="tag">Python</span>
+            <span class="tag">C</span>
+            <span class="tag">SQL</span>
+            <span class="tag">HTML / CSS</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Tools &amp; Platforms</h3>
+          <div class="tags">
+            <span class="tag">Git &amp; GitHub</span>
+            <span class="tag">VS Code</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Linux basics</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Currently Learning</h3>
+          <div class="tags">
+            <span class="tag learning">Cloud Computing</span>
+            <span class="tag learning">Cybersecurity</span>
+            <span class="tag learning">CUDA / GPU Programming</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">03 — Projects</span>
+        <h2>Selected work</h2>
+      </div>
+
+      <div class="proj-grid">
+        <article class="proj-card">
+          <div class="proj-top">
+            <div class="proj-dots"><span></span><span></span><span></span></div>
+            <span class="badge-sample">Sample</span>
+          </div>
+          <div class="proj-body">
+            <h3>Project Title One</h3>
+            <p>One or two sentences on what it does and the problem it solves. Swap this for your own project once it's on GitHub.</p>
+            <div class="proj-stack"><span>Java</span><span>MySQL</span></div>
+            <div class="proj-links">
+              <a href="#">GitHub ↗</a>
+              <a href="#">Live Demo ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj-card">
+          <div class="proj-top">
+            <div class="proj-dots"><span></span><span></span><span></span></div>
+            <span class="badge-sample">Sample</span>
+          </div>
+          <div class="proj-body">
+            <h3>Project Title Two</h3>
+            <p>One or two sentences describing this project's purpose, your role, and the outcome.</p>
+            <div class="proj-stack"><span>Python</span><span>API</span></div>
+            <div class="proj-links">
+              <a href="#">GitHub ↗</a>
+              <a href="#">Live Demo ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj-card">
+          <div class="proj-top">
+            <div class="proj-dots"><span></span><span></span><span></span></div>
+            <span class="badge-sample">Sample</span>
+          </div>
+          <div class="proj-body">
+            <h3>Project Title Three</h3>
+            <p>One or two sentences describing this project's purpose, your role, and the outcome.</p>
+            <div class="proj-stack"><span>HTML/CSS</span><span>JavaScript</span></div>
+            <div class="proj-links">
+              <a href="#">GitHub ↗</a>
+              <a href="#">Live Demo ↗</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <p class="proj-note">// These are placeholder cards — replace titles, descriptions, tech stacks, and links with your actual GitHub repos.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <div class="contact-wrap">
+        <h2>Let's build something.</h2>
+        <div class="contact-links">
+          <a href="mailto:youremail@example.com"><span>Email</span><span>→</span></a>
+          <a href="https://github.com/yourusername" target="_blank" rel="noopener"><span>GitHub</span><span>→</span></a>
+          <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener"><span>LinkedIn</span><span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Rommel Jave Casipong</span>
+    <span>Built for the BSIT internship-readiness portfolio</span>
+  </div>
+</footer>
+
+<script>
+  const navbtn = document.getElementById('navbtn');
+  const navlinks = document.getElementById('navlinks');
+  navbtn.addEventListener('click', () => {
+    const open = navlinks.classList.toggle('open');
+    navbtn.setAttribute('aria-expanded', open);
+  });
+  navlinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navlinks.classList.remove('open');
+      navbtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+</body>
+</html>
