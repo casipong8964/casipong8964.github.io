@@ -275,6 +275,9 @@
   @media (max-width:900px){ .proj-grid{ grid-template-columns:1fr 1fr; } }
   @media (max-width:640px){ .proj-grid{ grid-template-columns:1fr; } }
 
+  .proj-grid-2{ grid-template-columns:repeat(2,1fr); max-width:760px; }
+  @media (max-width:640px){ .proj-grid-2{ grid-template-columns:1fr; } }
+
   .proj-note{
     margin-top:28px; font-size:13.5px; color:var(--text-faint);
     font-family:'IBM Plex Mono', monospace;
@@ -415,19 +418,18 @@
         <h2>Selected work</h2>
       </div>
 
-      <div class="proj-grid">
+      <div class="proj-grid proj-grid-2">
         <article class="proj-card">
           <div class="proj-top">
             <div class="proj-dots"><span></span><span></span><span></span></div>
-            <span class="badge-sample">Sample</span>
+            <span class="badge-sample">PHP</span>
           </div>
           <div class="proj-body">
-            <h3>Project Title One</h3>
-            <p>One or two sentences on what it does and the problem it solves. Swap this for your own project once it's on GitHub.</p>
-            <div class="proj-stack"><span>Java</span><span>MySQL</span></div>
+            <h3>Docker Infrastructure</h3>
+            <p>Containerized deployment setup used to run the CRUD system and microservice API together with Docker.</p>
+            <div class="proj-stack"><span>Docker</span><span>PHP</span></div>
             <div class="proj-links">
-              <a href="#">GitHub ↗</a>
-              <a href="#">Live Demo ↗</a>
+              <a href="https://github.com/casipong8964/-Casipong_DockerCodebase-Docker-infrastructure" target="_blank" rel="noopener">GitHub ↗</a>
             </div>
           </div>
         </article>
@@ -435,37 +437,20 @@
         <article class="proj-card">
           <div class="proj-top">
             <div class="proj-dots"><span></span><span></span><span></span></div>
-            <span class="badge-sample">Sample</span>
+            <span class="badge-sample">PHP</span>
           </div>
           <div class="proj-body">
-            <h3>Project Title Two</h3>
-            <p>One or two sentences describing this project's purpose, your role, and the outcome.</p>
-            <div class="proj-stack"><span>Python</span><span>API</span></div>
+            <h3>IT302 — Coursework Project</h3>
+            <p>Repository for IT302 coursework — programming exercises and a course project built in PHP.</p>
+            <div class="proj-stack"><span>PHP</span></div>
             <div class="proj-links">
-              <a href="#">GitHub ↗</a>
-              <a href="#">Live Demo ↗</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj-card">
-          <div class="proj-top">
-            <div class="proj-dots"><span></span><span></span><span></span></div>
-            <span class="badge-sample">Sample</span>
-          </div>
-          <div class="proj-body">
-            <h3>Project Title Three</h3>
-            <p>One or two sentences describing this project's purpose, your role, and the outcome.</p>
-            <div class="proj-stack"><span>HTML/CSS</span><span>JavaScript</span></div>
-            <div class="proj-links">
-              <a href="#">GitHub ↗</a>
-              <a href="#">Live Demo ↗</a>
+              <a href="https://github.com/casipong8964/IT302-CASIPONG" target="_blank" rel="noopener">GitHub ↗</a>
             </div>
           </div>
         </article>
       </div>
 
-      <p class="proj-note">// These are placeholder cards — replace titles, descriptions, tech stacks, and links with your actual GitHub repos.</p>
+      <p class="proj-note">// Descriptions above are my best guess based on your repo names — let me know if any need correcting.</p>
     </div>
   </section>
 
