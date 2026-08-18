@@ -44,6 +44,23 @@
     from{ opacity:0; transform:translateY(14px); }
     to{ opacity:1; transform:translateY(0); }
   }
+  .avatar-wrap{
+    width:104px; height:104px;
+    border-radius:50%;
+    padding:3px;
+    background:linear-gradient(135deg, var(--accent), var(--accent-2));
+    margin-bottom:22px;
+    animation:fadeUp .7s ease-out both;
+  }
+  .avatar{
+    width:100%; height:100%;
+    border-radius:50%;
+    object-fit:cover;
+    object-position:center 15%;
+    display:block;
+    border:3px solid var(--bg);
+  }
+
   .hero .eyebrow, .hero h1, .hero .lead, .hero .btnrow, .hero .statuscard{
     animation:fadeUp .7s ease-out both;
   }
@@ -52,16 +69,17 @@
   .hero .btnrow{ animation-delay:.15s; }
   .hero .statuscard{ animation-delay:.2s; }
 
-  .reveal{
+  .reveal.pending{
     opacity:0; transform:translateY(16px);
+  }
+  .reveal{
     transition:opacity .6s ease-out, transform .6s ease-out;
   }
-  .reveal.in{ opacity:1; transform:translateY(0); }
 
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior:auto; }
     *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
-    .reveal{ opacity:1; transform:none; }
+    .reveal.pending{ opacity:1; transform:none; }
   }
 
   body{
@@ -337,6 +355,24 @@
   }
   .contact-links a:hover{ color:var(--accent); }
 
+  .status-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace; font-size:12px;
+    letter-spacing:.04em; color:var(--accent-2);
+    background:var(--accent-2-soft);
+    border:1px solid var(--accent-2-soft);
+    padding:6px 12px; border-radius:20px;
+    margin-bottom:18px;
+  }
+  .status-badge .dot{ margin-right:0; background:var(--accent-2); box-shadow:0 0 0 3px var(--accent-2-soft); }
+
+  .contact-sub{ color:var(--text-dim); font-size:14.5px; max-width:42ch; margin-top:14px; }
+
+  .contact-links a{ align-items:center; }
+  .cl-left{ display:flex; align-items:center; gap:10px; }
+  .contact-links svg{ flex-shrink:0; color:var(--text-faint); transition:color .15s; }
+  .contact-links a:hover svg{ color:var(--accent); }
+
   footer{
     border-top:1px solid var(--surface-line);
     padding:26px 0; font-size:12.5px; color:var(--text-faint);
@@ -367,6 +403,9 @@
   <section class="hero">
     <div class="wrap">
       <div>
+        <div class="avatar-wrap">
+          <img src="profile.jpg" alt="Rommel Jave Casipong" class="avatar">
+        </div>
         <span class="eyebrow">BSIT · Software Development Track</span>
         <h1>Rommel Jave<br>Casipong</h1>
         <p class="lead">Third-year BSIT student building toward <strong>AI and GPU-accelerated computing</strong> — writing code now, aiming for an internship and career at a company like <strong>NVIDIA</strong>.</p>
@@ -508,11 +547,24 @@
 
   <section id="contact" class="reveal">
     <div class="wrap contact">
+      <div class="sec-head" style="margin-bottom:26px;">
+        <span class="eyebrow">05 — Contact</span>
+      </div>
       <div class="contact-wrap">
-        <h2>Let's build something.</h2>
+        <div>
+          <span class="status-badge"><span class="dot"></span>Open to internship opportunities</span>
+          <h2>Let's build something.</h2>
+          <p class="contact-sub">Starting 4th year, looking for an internship where I can grow as a developer. Reach out — I'd love to hear from you.</p>
+        </div>
         <div class="contact-links">
-          <a href="mailto:rommeljavecasipong8964@acdeducation.com"><span>Email</span><span>→</span></a>
-          <a href="https://github.com/casipong8964" target="_blank" rel="noopener"><span>GitHub</span><span>→</span></a>
+          <a href="mailto:rommeljavecasipong8964@acdeducation.com">
+            <span class="cl-left"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>Email</span>
+            <span>→</span>
+          </a>
+          <a href="https://github.com/casipong8964" target="_blank" rel="noopener">
+            <span class="cl-left"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-.89-.01-1.75-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05a9.36 9.36 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.81 0 .28.18.61.69.5A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>GitHub</span>
+            <span>→</span>
+          </a>
         </div>
       </div>
     </div>
@@ -540,20 +592,23 @@
     });
   });
 
-  // Scroll-reveal for sections
-  const revealEls = document.querySelectorAll('.reveal');
+  // Scroll-reveal for sections (progressive enhancement: content is visible
+  // by default; we only hide it if we can confirm we'll be able to reveal it)
   if ('IntersectionObserver' in window) {
+    const revealEls = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          entry.target.classList.remove('pending');
           entry.target.classList.add('in');
           io.unobserve(entry.target);
         }
       });
     }, { threshold: 0.12 });
-    revealEls.forEach(el => io.observe(el));
-  } else {
-    revealEls.forEach(el => el.classList.add('in'));
+    revealEls.forEach(el => {
+      el.classList.add('pending');
+      io.observe(el);
+    });
   }
 
   // Active nav-link highlight while scrolling
