@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Page Not Found | Rommel Jave Casipong</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%2312151A'/%3E%3Crect x='3' y='3' width='58' height='58' rx='7' fill='none' stroke='%23D48A3E' stroke-width='2'/%3E%3Ctext x='32' y='41' font-family='monospace' font-size='22' font-weight='700' fill='%23E9E6DE' text-anchor='middle'%3ERJC%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#12151A; --bg-soft:#171B22; --surface:#1C212B; --surface-line:#2B313D;
+    --text:#E9E6DE; --text-dim:#939AA8; --text-faint:#5C6472;
+    --accent:#D48A3E; --accent-soft:#D48A3E33; --accent-2:#4FA8C9; --accent-2-soft:#4FA8C933;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:'IBM Plex Mono', monospace;
+    min-height:100vh; display:flex; align-items:center; justify-content:center;
+    text-align:center; padding:24px;
+    background-image:
+      linear-gradient(var(--bg-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--bg-soft) 1px, transparent 1px);
+    background-size:64px 64px;
+  }
+  .code{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:clamp(72px, 16vw, 140px);
+    font-weight:700; color:var(--accent);
+    line-height:1; letter-spacing:-0.02em;
+  }
+  .glitch{ position:relative; }
+  .glitch::after{
+    content:"404"; position:absolute; left:2px; top:0;
+    color:var(--accent-2); opacity:.5;
+    animation:glitch 2.4s infinite steps(2, end);
+  }
+  @keyframes glitch{
+    0%, 90%, 100%{ transform:translate(0,0); opacity:.5; }
+    92%{ transform:translate(-3px,1px); opacity:.7; }
+    94%{ transform:translate(3px,-1px); opacity:.3; }
+  }
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:20px; font-weight:600; margin:18px 0 10px;
+    color:var(--text);
+  }
+  p{ color:var(--text-dim); font-size:14px; max-width:44ch; margin:0 auto 28px; line-height:1.6; }
+  .path{
+    display:inline-block; background:var(--surface); border:1px solid var(--surface-line);
+    border-radius:4px; padding:6px 12px; color:var(--accent-2); font-size:12.5px;
+    margin-bottom:28px;
+  }
+  a.btn{
+    display:inline-block; text-decoration:none;
+    font-family:'IBM Plex Mono', monospace; font-size:13.5px;
+    padding:13px 26px; border-radius:3px;
+    background:var(--accent); color:#15130E; font-weight:500;
+    transition:background .15s;
+  }
+  a.btn:hover{ background:#c07c33; }
+  @media (prefers-reduced-motion: reduce){ .glitch::after{ animation:none; } }
+</style>
+</head>
+<body>
+  <div>
+    <div class="code glitch">404</div>
+    <h1>Page not found</h1>
+    <p>This route doesn't exist — maybe it moved, or the link's a typo. Let's get you back to solid ground.</p>
+    <div class="path">$ cd ~</div>
+    <div>
+      <a href="/" class="btn">← Back to Home</a>
+    </div>
+  </div>
+</body>
+</html>
