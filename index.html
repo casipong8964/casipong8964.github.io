@@ -395,11 +395,10 @@
     .cl-value{ text-align:left; }
   }
 
-  .stats-grid{
-    display:grid; grid-template-columns:1.4fr 1fr; gap:20px; align-items:start;
+  .badge-row{
+    display:flex; flex-wrap:wrap; gap:12px; align-items:center;
   }
-  .stats-img{ width:100%; height:auto; border-radius:6px; border:1px solid var(--surface-line); }
-  @media (max-width:760px){ .stats-grid{ grid-template-columns:1fr; } }
+  .badge-row img{ height:28px; width:auto; border-radius:4px; }
 
   .totop{
     position:fixed; right:22px; bottom:22px; z-index:60;
@@ -549,13 +548,15 @@
         <span class="eyebrow">04 — GitHub Activity</span>
         <h2>Live from the repo</h2>
       </div>
-      <div class="stats-grid">
-        <img src="https://github-readme-stats.vercel.app/api?username=casipong8964&show_icons=true&hide_border=true&theme=transparent&bg_color=00000000&title_color=D48A3E&text_color=E9E6DE&icon_color=4FA8C9&hide_rank=false"
-             alt="Rommel's GitHub stats" loading="lazy" class="stats-img">
-        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=casipong8964&hide_border=true&theme=transparent&bg_color=00000000&title_color=D48A3E&text_color=E9E6DE&layout=compact"
-             alt="Rommel's most used languages" loading="lazy" class="stats-img">
+      <div class="badge-row">
+        <img src="https://img.shields.io/github/followers/casipong8964?style=for-the-badge&color=D48A3E&labelColor=1C212B&logo=github&logoColor=E9E6DE&label=Followers"
+             alt="GitHub followers" loading="lazy">
+        <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Fusers%2Fcasipong8964&label=Public%20Repos&query=%24.public_repos&style=for-the-badge&color=4FA8C9&labelColor=1C212B"
+             alt="Public repos count" loading="lazy">
+        <img src="https://img.shields.io/github/last-commit/casipong8964/casipong8964.github.io?style=for-the-badge&color=D48A3E&labelColor=1C212B&label=Last%20Updated&logo=github&logoColor=E9E6DE"
+             alt="Last commit date" loading="lazy">
       </div>
-      <p class="proj-note">// Stats update automatically based on public GitHub activity.</p>
+      <p class="proj-note">// Badges pull live from the GitHub API — no separate hosting to break.</p>
     </div>
   </section>
 
